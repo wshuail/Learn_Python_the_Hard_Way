@@ -15,8 +15,8 @@ PHRASES = { # this is a dict
     '*** = %%% ()':
     'set *** as an instance of class %%%.',
     '***.***(@@@)':
-    'from *** get the *** fuction, and call it with parameters self, @@@.'
-    "***.*** = '***'":
+    'from *** get the *** fuction, and call it with parameters self, @@@.',
+    '***.*** = \'***\'':
     'from *** get the *** attribute and set it to \'***\'.'
 } # do not forget it ---- }
 
@@ -31,34 +31,34 @@ for word in urlopen(WORD_URL).readlines (): # from 'urlopen() get the readlines 
     
 def convert (snippet, phrase):
     class_name = [w.capitalize() for w in 
-                    random.sample(WORDS, snippet,count('%%%'))]
+                    random.sample(WORDS, snippet.count('%%%'))]
     other_name = random.sample(WORDS, snippet.count('***'))
     resultes = []
     param_names = []
     
 
-for i in range(0, snippet.count('@@@')):
-    param_count = random.randint (1, 3) # from random get the randint, and call it with parameter with '1' and '3'
-    param_names.append (','.join(random.sample(WORDS, param_count))) # from param_names get the append, and call it with ...; from random get sample with parameters ....; 
+    for i in range(0, snippet.count('@@@')):
+        param_count = random.randint (1, 3)
+        param_names.append (','.join(random.sample(WORDS, param_count))) 
     
-    for sentence in snippet, phrance:
-        result = sentence [:]
+        for sentence in snippet, phrase:
+            result = sentence [:]
         
-        #fake class name
-    for word in class_name:
-        result = result.replace('%%%', word, 1) # from result get the function 'replace'.
+            #fake class name
+            for word in class_name:
+                result = result.replace('%%%', word, 1) # from result get the function 'replace'.
         
-    # fake other names
-    for word in other_names:
-        result = result.replace ('***', word, 1)
+            # fake other names
+            for word in other_names:
+                result = result.replace ('***', word, 1)
         
-    # fake parameter lists
-    for word in param_names:
-        result = result.replace ('@@@', word, 1)
+            # fake parameter lists
+            for word in param_name:
+                result = result.replace ('@@@', word, 1)
         
-    results.append (result)
+            results.append (result)
     
-return results
+        return results
 
 
 
@@ -70,10 +70,10 @@ try:
         random.shuffle (snippets)
         
         for snippet in snippets:
-            phrase = PHRASE [snippet]
+            phrase = PHRASES [snippet]
             question, answer = convert (snippet, phrase)
-            if PHRASE_FIRST:
-                question, answer = answer question
+            if PHRASES_FIRST:
+                question, answer = answer, question
                 
             print question
             
