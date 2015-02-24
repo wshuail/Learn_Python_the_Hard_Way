@@ -12,7 +12,7 @@ indata = in_file.read()
 print 'The input file is %d bytes long.' % len(indata)
 
 print 'Does the output file exists? %r' %exists(to_file) # '%r' is used to debug.
-print 'Ready, hit RETURN to continue, CTRL-C to abort.'
+print 'Ready, hit R to continue, CTRL-C to abort.'
 raw_input()
 
 out_file = open (to_file, 'w')

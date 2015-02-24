@@ -1,6 +1,6 @@
 # This one is like your scripts with argv
-def print_two(*args): # what this * means.
-    arg1, arg2 = args
+def print_two(*arg): # what this * means.
+    arg1, arg2 = arg
     print 'arg1: %r, arg2: %r' %(arg1, arg2)
 
 # ok that *args is actually pointless, we can just do this.
@@ -19,4 +19,4 @@ def print_none():
 print_two ('Zed', 'Shaw')
 print_two_again ('Zed', 'Shaw')
 print_one ('First!')
-print_none
+print_none ()

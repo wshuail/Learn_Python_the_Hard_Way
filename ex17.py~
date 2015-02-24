@@ -20,5 +20,5 @@ out_file.write(indata)
 
 print 'Alright, all done.'
 
-outfile.close()
-infile.close()
+out_file.close()
+in_file.close()

@@ -9,7 +9,7 @@ def test_room():
     assert_equal(gold.paths, [])
     
 def test_room_paths():
-    certer = Room('Certer', 'Test room is center.')
+    center = Room('Certer', 'Test room is center.')
     north = Room('North', 'Test room is north.')
     south = Room('South', 'Test room is south.')
     
