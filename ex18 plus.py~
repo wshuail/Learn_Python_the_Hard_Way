@@ -1,6 +1,0 @@
-def print_length(meter):
-    wall, river = meter
-    print 'wall: %r \n river: %r' % (wall, river)
-    
-print ('18m', '25km')
-    
