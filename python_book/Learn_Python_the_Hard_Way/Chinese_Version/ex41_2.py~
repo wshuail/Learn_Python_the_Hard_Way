@@ -88,9 +88,9 @@ college = {'finance': finance,
 def newbie(university, whattodo):
     next = whattodo
     while True:
-        future = university[next]
+        whattodo = university[next]
         print '\n---------------'
-        next = future()
+        next = whattodo()
 
 
 newbie(college, 'start')
