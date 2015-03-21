@@ -1,0 +1,61 @@
+# !/usr/bin/dev python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Wang Shuailong'
+
+import urllib
+import urllib2
+import re
+
+class Tool(object):
+    # remove 'img' tag
+    removeImg = re.compile('<img.*?>| {7}|')
+    # remove link
+    removeAddr = re.compile('<a>*?>|</a>')
+    # change next line to \n
+    replaceLine = re.compile('<tr>|<div>|</div>|</p>')
+    # change table tag to \t
+    replaceTD = re.compile('<td>')
+    # two space before paragraph
+    replacePara = re.compile('</p.*?>')
+    #tags for changing lines
+    replaceBR = re.compile('<br><br>|<br>')
+    # remove other tags
+    removeExtraTag = re.compile('<.*?>')
+    
+    def replace(self, x):
+        x = re.sub(self.removeImg, '', x)
+        x = re.sub(self.removeAddr, '', x)
+        x = re.sub(self.replaceLine, '', x)
+        x = re.sub(self.replaceTD, '', x)
+        x = re.sub(self.replacePara, '', x)
+        x = re.sub(self.replaceBR, '', x)
+        x = re.sub(self.removeExtraTag, '', x)
+        return x.strip()
+
+url = 'http://tieba.baidu.com/p/3138733512?see_lz=1&pn=1'
+
+agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0)'
+header = {'User-Agent': agent}
+
+try:
+    request = urllib2.Request(url, headers = header)
+    response = urllib2.urlopen(request)
+    pageContent = response.read()
+    pattern = re.compile('<span class="red".*?style="margin.*?</span>.*?<span.*?>(.*?)</span>'+
+                         '.*?<h1 class="core_title_txt.*?>(.*?)</h1>' +
+                         '.*?<cc><div id=".*?" class=".*?">(.*?)</div><br></cc><br><div class=".*?></div>', re.S)
+    result = re.search(pattern, pageContent)
+    if result:
+        print result.group(1).strip(), result.group(2).strip(), '\n', Tool.replace(result.group(3).strip())
+    else:
+        print 'Get title failed !'
+
+except urllib2.URLError, e:
+    if hasattr(e, code):
+        print 'e.code: ', e.code
+    if hasattr(e, reason):
+        print 'e.reason: ', e.reason
+    
+
+        
