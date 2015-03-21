@@ -8,9 +8,11 @@ import urllib
 import urllib2
 import re
 
+header = {'User_Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'}
+
 # open the url and get the content of the page
 douban_url = 'http://www.douban.com/photos/album/154371813/'
-douban_request = urllib2.Request(douban_url)
+douban_request = urllib2.Request(douban_url, headers = header)
 douban_response = urllib2.urlopen(douban_request)
 douban_doc = douban_response.read().decode('utf-8')
 
@@ -42,7 +44,6 @@ for link in links:
 	big_pic.write(big_pic_data)
 	print 'Saving the picture ...'
 	big_pic.close()
-
 
 
 
