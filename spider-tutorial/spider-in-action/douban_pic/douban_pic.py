@@ -7,6 +7,7 @@ __description__ = '''this spider was used to scrape pictures on douban'''
 import urllib
 import urllib2
 import re
+import urlparse
 
 header = {'User_Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'}
 
@@ -21,17 +22,25 @@ picture_pattern = re.compile('div class="photo_wrap">.*?<a href="(.*?)".*?class=
 
 picture_links = re.findall(picture_pattern, douban_doc)
 if picture_links:
+	links = []
 	for picture_link in picture_links:
-		links = []
 		links.append(picture_link)
 else:
 	print 'Failed to get the links !'
 
 
 # open the links and download the pictures
-
+x = 0
 for link in links:
-	pic_request = urllib2.Request(link)
+	urlPath = urlparse.urlsplit(link)
+	urlPath = str(urlPath)
+	picId = urlPath.split('/')[3]
+	print link
+	print picId
+	picture = urllib.urlretrieve(link, '%x.jpg' % x)
+	x += 1
+
+'''	pic_request = urllib2.Request(link)
 	pic_response = urllib2.urlopen(pic_request)
 	pic_doc = pic_response.read().decode('utf-8')
 
@@ -45,7 +54,7 @@ for link in links:
 	print 'Saving the picture ...'
 	big_pic.close()
 
-
+'''
 
 
 
