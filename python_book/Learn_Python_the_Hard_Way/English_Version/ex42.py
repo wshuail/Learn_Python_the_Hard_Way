@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # animal is-a object (yes, sort of confusing) look at the extra credit
 
 #make a class named Animal, that is a object
@@ -31,7 +34,7 @@ class Person (object):
 # Employee is a Person
 class Employee (Person):
     def __init__ (self, name, salary): # the Employee has-a __init__ that tales self, name and salary parameters.
-        # from super(Employee self) get the __init__ function, and call it with parameter name
+        # The class Employee inherits something from Person
         super(Employee, self).__init__(name)
     
         # Employee has-a salary.
@@ -62,6 +65,7 @@ mary = Person ('Person')
 mary.pet = satan
 
 # set frank to an instance of Employee parameters with Frank and 120000
+# frank is an Employee
 frank = Employee ('Frank', 120000)
 
 # frank has-a pet named rover

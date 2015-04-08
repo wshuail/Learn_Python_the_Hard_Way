@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import random
 from urllib import urlopen
 import sys
@@ -5,7 +8,7 @@ import sys
 WORD_URL = 'http://learncodethehardway.org/words.txt'
 WORDS = []
 
-PHRASES = { # this is a dict
+PHRASES = {
     'class %%%(%%%):':
     'make a class named %%% that is a %%%.',
     'class %%%(object):\n\tdef__init__(self, ***)':
@@ -18,7 +21,7 @@ PHRASES = { # this is a dict
     'from *** get the *** fuction, and call it with parameters self, @@@.',
     '***.*** = \'***\'':
     'from *** get the *** attribute and set it to \'***\'.'
-} # do not forget it ---- }
+}
 
 # do they want to drill phrase first
 PHRASE_FIRST = False
@@ -32,7 +35,7 @@ for word in urlopen(WORD_URL).readlines (): # from 'urlopen() get the readlines 
 def convert (snippet, phrase):
     class_name = [w.capitalize() for w in 
                     random.sample(WORDS, snippet.count('%%%'))]
-    other_name = random.sample(WORDS, snippet.count('***'))
+    other_names = random.sample(WORDS, snippet.count('***'))
     resultes = []
     param_names = []
     
@@ -70,8 +73,8 @@ try:
         random.shuffle (snippets)
         
         for snippet in snippets:
-            phrase = PHRASES [snippet]
-            question, answer = convert (snippet, phrase)
+            phrase = PHRASES[snippet]
+            question, answer = convert(snippet, phrase)
             if PHRASES_FIRST:
                 question, answer = answer, question
                 
