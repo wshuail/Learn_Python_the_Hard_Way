@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 ten_things = 'Apples Oranges Crows Telephones Light Sugar'
 
 print 'Wait, there\'s not ten things in the list. Let\'s fix it.'

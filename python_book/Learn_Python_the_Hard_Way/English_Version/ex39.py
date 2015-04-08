@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # creat a mapping of state to abbreviation
 states = {
     'Oregon':'OR',
@@ -35,7 +38,7 @@ print 'Florida has cities: ', cities[states['Florida']]
 
 # print every states' abbreviation
 print '-' * 10
-for state, abbrev in states.items ():
+for state, abbrev in states.items():
     print '%s is abbreviated %s.' % (state, abbrev)
     
 # print every city in state
