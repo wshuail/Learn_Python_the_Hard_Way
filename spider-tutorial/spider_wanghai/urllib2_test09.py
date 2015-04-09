@@ -1,3 +1,7 @@
+# /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from urllib2 import Request, urlopen, HTTPError, URLError
 
 req = Request('http://www.csdn.com/callmewhy')
@@ -10,9 +14,9 @@ except URLError, e:
         print 'We failed to reach a server.'
         print 'Error code: ', e.code
         
-    else hasattr(e, 'reason'):
+    elif hasattr(e, 'reason'):
         print 'The server could not fullfill the request.'
-        print 'Error code: ', e.code
+        print 'Error code: ', e.reason
     
 else:
     print 'We success !'

@@ -1,6 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
+# This is the codes from chapter 42 of LPTHW (Chinese version)
+
 from sys import exit
 from random import randint
 

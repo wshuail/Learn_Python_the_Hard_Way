@@ -1,3 +1,9 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# This is the exercise of chapeter 42 of Learn Python the Hard Way (Chinese Version)
+
+
 class Myclass(object):
     def __init__(self):
         self.number = 1000

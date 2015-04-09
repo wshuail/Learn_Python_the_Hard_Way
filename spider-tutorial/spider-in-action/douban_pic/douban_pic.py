@@ -32,13 +32,12 @@ else:
 # open the links and download the pictures
 x = 0
 for link in links:
+	link = link + 'large'
 	urlPath = urlparse.urlsplit(link)
 	urlPath = str(urlPath)
 	picId = urlPath.split('/')[3]
 	print link
-	print picId
-	picture = urllib.urlretrieve(link, '%x.jpg' % x)
-	x += 1
+	urllib.urlretrieve(link, '%s.jpg' % picId)
 
 '''	pic_request = urllib2.Request(link)
 	pic_response = urllib2.urlopen(pic_request)

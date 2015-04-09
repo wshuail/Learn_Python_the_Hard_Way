@@ -1,12 +1,14 @@
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import urllib2
 
 # creat a password manager
 password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
 
-# username and password
 top_level_url = 'http://www.example.com/foo'
 
+# add username and password
 # if know realm, instead 'None'
 password_mgr.add_password(None, top_level_url, 'why', 'abc123')
 

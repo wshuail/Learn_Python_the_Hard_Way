@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import urllib
 import urllib2
 
@@ -7,7 +10,7 @@ Values = {'name': 'WHY',
     'location': 'SDU',
     'language': 'Python'}
     
-data = urllib2.urlencode(values) #编码工作
-req = urllib2.Request(url,data) #发送请求，同时传data表单
-response = urllib2.urlopen(req) #接收反馈信息
-the_page = response.read() #读取反馈信息
+data = urllib2.urlencode(values) #code the data
+req = urllib2.Request(url,data) #send request
+response = urllib2.urlopen(req) #receive response
+the_page = response.read() #read the response
