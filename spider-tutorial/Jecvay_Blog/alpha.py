@@ -4,6 +4,7 @@
 import re
 import urllib
 import urllib2
+from httplib import getheader
 from collections import deque
 
 queue = deque()
@@ -22,9 +23,9 @@ while queue:
 
     cnt += 1
     urlrequest = urllib2.Request(url)
-    urlresponse = urllib2.urlopen(urlrequest)
-    if 'html' not in urlresponse.getHeader('Content-Type'):
-        continue
+    urlresponse = urllib2.urlopen(urlrequest, timeout = 3)
+#    if 'html' not in urlresponse.getheader('Content-Type'):
+#        continue
 
     # process Error
     try:

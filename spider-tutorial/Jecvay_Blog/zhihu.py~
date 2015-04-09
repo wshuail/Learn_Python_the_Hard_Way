@@ -1,0 +1,65 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import gzip
+import re
+import cookielib
+import urllib
+import urllib2
+import StringIO
+import chardet
+
+# decompress the web page
+def decompress(data):
+    if data.info().get('Content-Encoding') == 'gzip':
+        buf = StringIO.StringIO(data.read())
+        gzip_f = gzip.GzipFile(fileobj=buf)
+        content = gzip_f.read()
+    else:
+        content = data.read()
+    return content
+
+
+# define the opener
+def getOpener(head):
+    # deal with the coockies
+    cookies = cookielib.CookieJar()
+    pro = urllib2.HTTPCookieProcessor(cookies)
+    opener = urllib2.build_opener(pro)
+    header = []
+    for key, value in head.items():
+        elem = (key, value)
+        header.append(elem)
+    opener.addheaders = header
+    return opener
+
+header = {
+    'Connection': 'Keep-Alive',
+    'Accept': 'text/html, application/xhtml+xml, */*',
+    'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko',
+    'Accept-Encoding': 'gzip, deflate',
+    'Host': 'www.zhihu.com',
+    'DNT': '1'
+}
+
+url = 'http://www.zhihu.com/login'
+opener = getOpener(header)
+
+id = 'nawusicaa@foxmail.com'
+passwd = 'b13733752839'
+postDict = {
+        'email': id,
+        'password': passwd,
+        'code': '',
+        'webrequest': 'true'
+        }
+
+postdata = urllib.urlencode(postDict)
+op_login = opener.open(url, postdata)
+data = decompress(op_login)
+
+print data
+
+
