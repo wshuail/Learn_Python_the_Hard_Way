@@ -1,3 +1,8 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# This script describes the override of the class
+
 class Parent (object):
     
     def override(self):

@@ -1,3 +1,8 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# THis scripts describe the alternative of the class
+
 class Parent(object):
     def altered(self):
         print 'PARENT altered'
